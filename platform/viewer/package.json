@@ -30,7 +30,6 @@
     "dev:dcm4chee": "cross-env NODE_ENV=development APP_CONFIG=config/local_dcm4chee.js webpack serve --config .webpack/webpack.pwa.js",
     "dev:static": "cross-env NODE_ENV=development APP_CONFIG=config/local_static.js webpack serve --config .webpack/webpack.pwa.js",
     "dev:viewer": "yarn run dev",
-    "preinstall": "node preinstall.js",
     "start": "yarn run dev",
     "test:e2e": "cypress open",
     "test:e2e:ci": "percy exec -- cypress run --config video=false --record --browser chrome --spec 'cypress/integration/visual-regression/**/*'",

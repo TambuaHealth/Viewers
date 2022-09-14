@@ -3,8 +3,8 @@ export default function getModalities(Modality, ModalitiesInStudy) {
     return {};
   }
 
-  const modalities = Modality || {
-    vr: 'CS',
+  const modalities = /*Modality ||*/ {
+    vr: 'US',
     Value: [],
   };
 
