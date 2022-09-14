@@ -375,7 +375,7 @@ function WorkList({
   const versionNumber = process.env.VERSION_NUMBER;
   const buildNumber = process.env.BUILD_NUM;
 
-  const menuOptions = [
+  const menuOptions = [/*
     {
       title: t('Header:About'),
       icon: 'info',
@@ -385,7 +385,7 @@ function WorkList({
           title: 'About OHIF Viewer',
           contentProps: { versionNumber, buildNumber },
         }),
-    },
+    },*/
     {
       title: t('Header:Preferences'),
       icon: 'settings',

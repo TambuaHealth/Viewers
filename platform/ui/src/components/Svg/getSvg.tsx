@@ -1,6 +1,6 @@
 import React from 'react';
 // Svgs
-import logoOhif from './../../assets/svgs/logo-ohif.svg';
+import logoOhif from './../../assets/svgs/t-health-logo.svg';
 
 const SVGS = {
   'logo-ohif': logoOhif,
@@ -16,7 +16,7 @@ export default function getSvg(key, props) {
     return React.createElement('div', null, 'Missing SVG');
   }
 
-  return React.createElement(SVGS[key], props);
+  return React.createElement(SVGS[key], { ...props, className: 'w-48' });
 }
 
 export { SVGS };

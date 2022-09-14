@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
@@ -6,6 +6,7 @@ import { NavBar, Svg, Icon, IconButton, Dropdown } from '../';
 
 function Header({ children, menuOptions, isReturnEnabled, onClickReturnButton, isSticky, WhiteLabeling }) {
   const { t } = useTranslation('Header');
+  const [fullScreen, setFullScreen] = useState(false);
 
   // TODO: this should be passed in as a prop instead and the react-router-dom
   // dependency should be dropped
@@ -14,6 +15,33 @@ function Header({ children, menuOptions, isReturnEnabled, onClickReturnButton, i
       onClickReturnButton()
     }
   };
+
+  const toggleFullScreen = () => {
+    if (!fullScreen) openFullScreen();
+    else closeFullScreen();
+    setTimeout(() => setFullScreen(!fullScreen), 500);
+  };
+
+  const openFullScreen = () => {
+    const elem = document.getElementById('root');
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+  }
+
+  const closeFullScreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { /* Safari */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE11 */
+      document.msExitFullscreen();
+    }
+  }
 
   const CustomLogo = (React) => {
     return WhiteLabeling.createLogoComponentFn(React)
@@ -48,16 +76,18 @@ function Header({ children, menuOptions, isReturnEnabled, onClickReturnButton, i
             >
               <Icon name="settings" />
             </IconButton>
-            <IconButton
-              id={"options-chevron-down-icon"}
-              variant="text"
-              color="inherit"
-              size="initial"
-              className="text-primary-active"
-            >
-              <Icon name="chevron-down" />
-            </IconButton>
           </Dropdown>
+
+          <IconButton
+            id={'fullscreen'}
+            variant="text"
+            color="inherit"
+            size="medium"
+            className="text-primary-active"
+            onClick={toggleFullScreen}
+          >
+            <Icon name={ fullScreen ? "tool-exit-fullscreen" : "tool-enter-fullscreen" } />
+          </IconButton>
         </div>
       </div>
     </NavBar>
@@ -77,11 +107,13 @@ Header.propTypes = {
   isSticky: PropTypes.bool,
   onClickReturnButton: PropTypes.func,
   WhiteLabeling: PropTypes.element,
+  fullScreen: PropTypes.bool,
 };
 
 Header.defaultProps = {
   isReturnEnabled: true,
-  isSticky: false
+  isSticky: false,
+  fullScreen: false,
 };
 
 export default Header;

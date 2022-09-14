@@ -39,6 +39,8 @@ import tracked from './../../assets/icons/tracked.svg';
 import unlink from './../../assets/icons/unlink.svg';
 
 /** Tools */
+import toolEnterFullscreen from './../../assets/icons/tool-enter-fullscreen.svg';
+import toolExitFullscreen from './../../assets/icons/tool-exit-fullscreen.svg';
 import toolZoom from './../../assets/icons/tool-zoom.svg';
 import toolCapture from './../../assets/icons/tool-capture.svg';
 import toolLayout from './../../assets/icons/tool-layout.svg';
@@ -108,6 +110,8 @@ const ICONS = {
   unlink: unlink,
 
   /** Tools */
+  'tool-enter-fullscreen': toolEnterFullscreen,
+  'tool-exit-fullscreen': toolExitFullscreen,
   'tool-zoom': toolZoom,
   'tool-capture': toolCapture,
   'tool-layout': toolLayout,
